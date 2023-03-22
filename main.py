@@ -6,6 +6,7 @@ customtkinter.set_default_color_theme("green")
 
 app = customtkinter.CTk()
 app.geometry("425x600")
+app.title("Python-based Calculator")
 
 clickAmount = 0
 def increment_count():
