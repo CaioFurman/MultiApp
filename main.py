@@ -6,7 +6,9 @@ from calculatorFunctions import add, subtract, multiply, divide
 # Tried to short and improve the code quality using loops to create the CustomTkinter buttons
 # But because the button creation and placement are two separate things I didn't find a way to fix it
 
-#================== App Setup
+# =========================== #
+# ######## App Setup ######## #
+# =========================== #
 # Basic settings for the app
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("green")
@@ -28,7 +30,9 @@ for frame in (home, clickCounter, calculator):
     frame.grid(row=0, column=0, sticky='nsew')
 
 
-#================== Home
+# =========================== #
+# ########## Home ########### #
+# =========================== #
 # Main page
 show_frame(home)
 
@@ -68,7 +72,9 @@ calculatorButton.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 closeButton.place(relx=0.5, rely=0.75, anchor=tkinter.CENTER)
 
 
-#================== Counter
+# =========================== #
+# ######### Counter ######### #
+# =========================== #
 # Code for the counter and frame appearance.
 
 # Button Functions
@@ -133,7 +139,9 @@ clearButton.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
 homeButtonCC.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
 
 
-#================== Calculator
+# =========================== #
+# ####### Calculator ######## #
+# =========================== #
 # Code for the calculator and frame appearance.
 
 # Result Functions
