@@ -12,6 +12,7 @@ def decrement_count():
     global clickAmount
     clickAmount -= 1
     return clickAmount
+
 def clear_count():
     global clickAmount
     clickAmount = 0
