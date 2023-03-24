@@ -18,7 +18,7 @@ customtkinter.set_default_color_theme("green")
 
 app = customtkinter.CTk()
 app.geometry("500x500")
-app.title("Python-based Calculator")
+app.title("Python-based App")
 app.rowconfigure(0, weight=1)
 app.columnconfigure(0, weight=1)
 
@@ -98,7 +98,7 @@ def calculate():
     result = "0"
 
     if (y == 0) and (choice == '÷'):
-        resultEntry.configure(placeholder_text=result)
+        resultLabel.configure(text=result)
 
     else:
         operator = {
@@ -110,7 +110,7 @@ def calculate():
 
         if choice in operator:
             result = str(operator[choice](x, y))
-            resultEntry.configure(placeholder_text=result)
+            resultLabel.configure(text=result)
             print(f'{x} {choice} {y} = {result}')
 
         else:
@@ -118,19 +118,11 @@ def calculate():
 
 
 # Components
-resultEntry = customtkinter.CTkEntry(
+resultLabel = customtkinter.CTkLabel(
     calculator,
-    width=330,
-    height=100,
-    placeholder_text='Result',
-    font=(tuple,40),
-    border_width=1,
-    corner_radius=5
-    # status='readonly'
-    # customtkinter doesn't allow you to change the value so read-only breaks the result screen
-    # because resultEntry.set(value) doesn't work.
+    font=(tuple, 60),
+    text="0"
 )
-
 firstEntry = customtkinter.CTkEntry(
     calculator,
     placeholder_text="",
@@ -140,7 +132,6 @@ firstEntry = customtkinter.CTkEntry(
     border_width=1,
     corner_radius=5
 )
-
 secondEntry = customtkinter.CTkEntry(
     calculator,
     placeholder_text="",
@@ -150,13 +141,11 @@ secondEntry = customtkinter.CTkEntry(
     border_width=1,
     corner_radius=5
 )
-
 operationLabel = customtkinter.CTkLabel(
     calculator,
     font=(tuple, 40),
     text="+"
 )
-
 operatorChoice = customtkinter.CTkOptionMenu(
     calculator,
     width=125,
@@ -165,7 +154,6 @@ operatorChoice = customtkinter.CTkOptionMenu(
     values=["+", "-", "x", "÷"],
     command=operatorLabel
 )
-
 calculateButton = customtkinter.CTkButton(
     calculator,
     width=120,
@@ -185,7 +173,7 @@ operatorChoice.set("+")
 
 
 # Placement
-resultEntry.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
+resultLabel.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
 firstEntry.place(relx=0.3, rely=0.45, anchor=tkinter.CENTER)
 secondEntry.place(relx=0.7, rely=0.45, anchor=tkinter.CENTER)
 operationLabel.place(relx=0.5, rely=0.45, anchor=tkinter.CENTER)
