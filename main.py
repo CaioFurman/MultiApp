@@ -146,32 +146,24 @@ def calculate():
     choice = operatorChoice.get()
     result = "0"
 
-    if (choice == '+'):
-        result = str(add(x, y))
-        resultEntry.configure(placeholder_text = result)
-        print(f'{x} {choice} {y} = {result}')
-
-    elif (choice == '-'):
-        result = str(subtract(x, y))
+    if (y == 0) and (choice == '÷'):
         resultEntry.configure(placeholder_text=result)
-        print(f'{x} {choice} {y} = {result}')
 
-    elif (choice == 'x'):
-        result = str(multiply(x, y))
-        resultEntry.configure(placeholder_text=result)
-        print(f'{x} {choice} {y} = {result}')
+    else:
+        operator = {
+            '+': add,
+            '-': subtract,
+            'x': multiply,
+            '÷': divide,
+        }
 
-    elif (choice == '÷'):
-        if(y == 0):
-            resultEntry.configure(placeholder_text='0')
-
-        else:
-            result = str(divide(x, y))
+        if choice in operator:
+            result = str(operator[choice](x, y))
             resultEntry.configure(placeholder_text=result)
             print(f'{x} {choice} {y} = {result}')
 
-    else:
-        print('error')
+        else:
+            print('error')
 
 
 # Components
@@ -183,9 +175,9 @@ resultEntry = customtkinter.CTkEntry(
     font=(tuple,40),
     border_width=1,
     corner_radius=5
-    # status = 'readonly'
+    # status='readonly'
     # customtkinter doesn't allow you to change the value so read-only breaks the result screen
-    # resultEntry.set("value") also doesn't work.
+    # because resultEntry.set(value) doesn't work.
 )
 
 firstEntry = customtkinter.CTkEntry(
@@ -222,7 +214,6 @@ operatorChoice = customtkinter.CTkOptionMenu(
     values=["+", "-", "x", "÷"],
     command=operatorLabel
 )
-operatorChoice.set("+")
 
 calculateButton = customtkinter.CTkButton(
     calculator,
@@ -242,8 +233,10 @@ homeButtonC = customtkinter.CTkButton(
     command=lambda:show_frame(home)
 )
 
+# Dropdown default value
+operatorChoice.set("+")
 
-#Placement
+# Placement
 resultEntry.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
 firstEntry.place(relx=0.3, rely=0.45, anchor=tkinter.CENTER)
 secondEntry.place(relx=0.7, rely=0.45, anchor=tkinter.CENTER)
