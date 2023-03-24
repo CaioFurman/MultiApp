@@ -1,5 +1,7 @@
 import tkinter
 import customtkinter
+import counterFunctions
+from calculatorFunctions import add, subtract, multiply, divide
 
 # Tried to short and improve the code quality using loops to create the CustomTkinter buttons
 # But because the button creation and placement are two separate things I didn't find a way to fix it
@@ -68,34 +70,16 @@ closeButton.place(relx=0.5, rely=0.75, anchor=tkinter.CENTER)
 
 #================== Counter
 # Code for the counter and frame appearance.
-clickAmount = 0
-
-
-# Counter Functions
-def increment_count():
-    global clickAmount
-    clickAmount += 1
-    return clickAmount
-
-def decrement_count():
-    global clickAmount
-    clickAmount -= 1
-    return clickAmount
-def clear_count():
-    global clickAmount
-    clickAmount = 0
-    return clickAmount
 
 # Button Functions
-def incrementButton_function():
-    clickCounterLabel.configure(text=f"{increment_count()}")
+def incrementButton():
+    clickCounterLabel.configure(text=f"{counterFunctions.increment_count()}")
 
-def decrementButton_function():
-    clickCounterLabel.configure(text=f"{decrement_count()}")
+def decrementButton():
+    clickCounterLabel.configure(text=f"{counterFunctions.decrement_count()}")
 
-def clearButton_function():
-    clickCounterLabel.configure(text=f"{clear_count()}")
-
+def clearButton():
+    clickCounterLabel.configure(text=f"{counterFunctions.clear_count()}")
 
 # Components
 clickCounterLabel = customtkinter.CTkLabel(
@@ -110,7 +94,7 @@ incrementButton = customtkinter.CTkButton(
     height=60,
     font=(tuple, 20),
     text="Add",
-    command=incrementButton_function
+    command=incrementButton
 )
 
 decrementButton = customtkinter.CTkButton(
@@ -119,7 +103,7 @@ decrementButton = customtkinter.CTkButton(
     height=60,
     font=(tuple, 20),
     text="Subtract",
-    command=decrementButton_function
+    command=decrementButton
 )
 
 clearButton = customtkinter.CTkButton(
@@ -128,7 +112,7 @@ clearButton = customtkinter.CTkButton(
     height=60,
     font=(tuple, 20),
     text="Clear",
-    command=clearButton_function
+    command=clearButton
 )
 
 homeButtonCC = customtkinter.CTkButton(
@@ -151,22 +135,6 @@ homeButtonCC.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
 
 #================== Calculator
 # Code for the calculator and frame appearance.
-result = "0"
-x = 0
-y = 0
-
-# Calculation Functions
-def add(x, y):
-    return x + y
-
-def subtract(x, y):
-    return x - y
-
-def multiply(x, y):
-    return x * y
-
-def divide(x, y):
-    return x / y
 
 # Result Functions
 def operatorLabel(choice):
@@ -182,23 +150,29 @@ def calculate():
         result = str(add(x, y))
         resultEntry.configure(placeholder_text = result)
         print(f'{x} {choice} {y} = {result}')
+
     elif (choice == '-'):
         result = str(subtract(x, y))
         resultEntry.configure(placeholder_text=result)
         print(f'{x} {choice} {y} = {result}')
+
     elif (choice == 'x'):
         result = str(multiply(x, y))
         resultEntry.configure(placeholder_text=result)
         print(f'{x} {choice} {y} = {result}')
+
     elif (choice == '÷'):
         if(y == 0):
             resultEntry.configure(placeholder_text='0')
+
         else:
             result = str(divide(x, y))
             resultEntry.configure(placeholder_text=result)
             print(f'{x} {choice} {y} = {result}')
+
     else:
         print('error')
+
 
 # Components
 resultEntry = customtkinter.CTkEntry(
@@ -267,6 +241,7 @@ homeButtonC = customtkinter.CTkButton(
     text="Return to Home",
     command=lambda:show_frame(home)
 )
+
 
 #Placement
 resultEntry.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
