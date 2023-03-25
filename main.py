@@ -1,6 +1,6 @@
 import customtkinter
-from Components.homeButtons import counterButton, calculatorButton, exitButton
-from Components.returnButton import returnButton
+from Style.homeButtons import counterButton, calculatorButton, exitButton
+from Style.returnButton import returnButton
 from counter import showCounter
 from calculator import showCalculator
 

@@ -1,7 +1,7 @@
 import customtkinter
 import tkinter
-from Components.counterButtons import incrementButton, decrementButton, clearButton
-from Components.returnButton import returnButton
+from Style.counterButtons import incrementButton, decrementButton, clearButton
+from Style.returnButton import returnButton
 from Functions.counterFunctions import increment_count, decrement_count, clear_count
 
 # =========================== #
