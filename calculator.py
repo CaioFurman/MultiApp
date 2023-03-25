@@ -32,10 +32,6 @@ def showCalculator(calculatorFrame):
             if choice in operator:
                 result = str(operator[choice](x, y))
                 resultLabel.configure(text=result)
-                print(f'{x} {choice} {y} = {result}')
-
-            else:
-                print('error')
 
     # =========================== #
     # ########## Style ########## #
