@@ -1,19 +1,20 @@
 import customtkinter
+counterValue = 0
 
-clickAmount = 0
-
-# Counter Functions
+# Modification of the counter values
 def increment_count():
-    global clickAmount
-    clickAmount += 1
-    return clickAmount
+    global counterValue
+    counterValue += 1
+    return counterValue
+
 
 def decrement_count():
-    global clickAmount
-    clickAmount -= 1
-    return clickAmount
+    global counterValue
+    counterValue -= 1
+    return counterValue
+
 
 def clear_count():
-    global clickAmount
-    clickAmount = 0
-    return clickAmount
+    global counterValue
+    counterValue = 0
+    return counterValue
