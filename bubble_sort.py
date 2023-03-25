@@ -6,6 +6,7 @@ import random
 # =========================== #
 # ####### Bubble Sort ####### #
 # =========================== #
+
 def showBubble(bubbleFrame):
     def bubble_sort(arr):
         n = len(arr)
