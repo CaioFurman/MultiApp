@@ -31,14 +31,17 @@ def calculatorButton(presentFrame, calculatorFrame):
 
     calculatorButton.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
-def exitButton(presentFrame, app):
-    exitButton = customtkinter.CTkButton(
+def bubbleButton(presentFrame, bubbleFrame):
+    def show_calculatorFrame():
+        bubbleFrame.tkraise()
+
+    bubbleButton = customtkinter.CTkButton(
         presentFrame,
         width=300,
         height=100,
         font=(tuple, 30),
-        text="Close",
-        command=lambda: app.destroy()
+        text="Bubble Sort",
+        command=lambda: show_calculatorFrame()
     )
 
-    exitButton.place(relx=0.5, rely=0.75, anchor=tkinter.CENTER)
+    bubbleButton.place(relx=0.5, rely=0.75, anchor=tkinter.CENTER)

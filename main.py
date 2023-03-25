@@ -1,8 +1,10 @@
 import customtkinter
-from Style.homeButtons import counterButton, calculatorButton, exitButton
+import random
+from Style.homeButtons import counterButton, calculatorButton, bubbleButton
 from Style.returnButton import returnButton
 from counter import showCounter
 from calculator import showCalculator
+from bubble_sort import showBubble
 
 # =========================== #
 # ######## App Setup ######## #
@@ -20,8 +22,9 @@ app.columnconfigure(0, weight=1)
 home = customtkinter.CTkFrame(app)
 clickCounter = customtkinter.CTkFrame(app)
 calculator = customtkinter.CTkFrame(app)
+bubble = customtkinter.CTkFrame(app)
 
-for frame in (home, clickCounter, calculator):
+for frame in (home, clickCounter, calculator, bubble):
     frame.grid(row=0, column=0, sticky='nsew')
 
 
@@ -33,7 +36,7 @@ home.tkraise()
 # Home frame selection buttons
 counterButton(home, clickCounter)
 calculatorButton(home, calculator)
-exitButton(home, app)
+bubbleButton(home, bubble)
 
 # =========================== #
 # ######### Counter ######### #
@@ -48,5 +51,12 @@ returnButton(clickCounter, home)
 
 showCalculator(calculator)
 returnButton(calculator, home)
+
+# =========================== #
+# ####### Bubble Sort ####### #
+# =========================== #
+
+showBubble(bubble)
+returnButton(bubble, home)
 
 app.mainloop()
